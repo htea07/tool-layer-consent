@@ -1,4 +1,4 @@
-# medical-agent-referral
+# Enforcing Patient Consent Between AI Agents in Code, Not Prompt
 
 ▶ Live demo: https://cross-principal-medical-referral.streamlit.app/
 
@@ -104,18 +104,3 @@ negotiating **purpose-scoped, minimum-necessary** disclosure, including the
 special-category consent (Part 2 / psychotherapy / HIV) that genuinely requires
 explicit patient authorization — as a concrete, runnable demonstrator rather
 than a spec.
-
-## Roadmap
-
-- [x] `scope.py` + tests (the core): minimum-necessary relevance gate
-- [x] protected-category gate: specific-authorization model for Part 2 / psychotherapy / HIV
-- [x] single specialist agent, manual tool-calling loop
-- [x] `request_additional_scope`: dynamic escalation, policy-bounded, can't reach protected data
-- [x] structured decision log: every disclosure/escalation decision recorded (`audit.py`)
-- [x] PCP agent + cross-principal router (one-directional handoff)
-- [ ] code-derived relevance: map ICD-10/SNOMED -> specialty so the ordinary-record labels aren't self-authored
-- [ ] eval harness: scenario suite with ground-truth labels + leak-rate / over-disclosure table
-- [ ] adversarial prompt-injection test (exfiltration attempt against the boundary)
-- [ ] Firestore swap for `data.py`
-- [ ] Claude-on-Vertex + Cloud Run deploy
-- [ ] thin Next.js UI with the withheld-records badge
