@@ -94,7 +94,7 @@ python pcp_agent.py         # drive the PCP agent, which consults the specialist
 unauthorized-protected records out), then a pulmonology escalation **granted**,
 a substance-use escalation **denied** (Part 2), and the full decision log.
 
-## Prior art & how this differs
+## Prior work & connection to this work
 
 Tool-layer authorization for LLM agents is established practice (OWASP AI Agent
 Security Cheat Sheet; Oso, Cerbos). The MCP authorization spec and Google's A2A
