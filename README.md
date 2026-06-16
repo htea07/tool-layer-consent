@@ -1,7 +1,6 @@
-# agent-referral
+# medical-agent-referral
 
-**▶ Live demo: https://cross-principal-medical-referral.streamlit.app/**
-&nbsp;·&nbsp; no setup, no API key — pick a case and watch the enforcement run.
+▶ Live demo: https://cross-principal-medical-referral.streamlit.app/
 
 A working demonstrator of **minimum-necessary disclosure enforcement for
 cross-principal agent communication**, grounded in healthcare referral.
