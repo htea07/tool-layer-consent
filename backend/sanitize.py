@@ -9,7 +9,7 @@ This mirrors Stage 1 of Neupane et al. (2025), "Towards a HIPAA Compliant Agenti
 System in Healthcare." It is deliberately deterministic and dependency-free.
 
 HONEST LIMITATION: regex cannot reliably catch *names* or other free-text contextual
-PHI — that is exactly the job of the BERT/NER Stage 2 (deferred). So this layer is
+PHI, that is exactly the job of the BERT/NER Stage 2 (deferred). So this layer is
 necessary but not sufficient; it is the cheap, exact half of de-identification.
 """
 

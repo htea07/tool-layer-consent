@@ -13,7 +13,7 @@ from enum import IntEnum
 # Categories that require SPECIFIC written patient authorization to disclose, over and
 # above ordinary minimum-necessary relevance: substance-use-disorder treatment records
 # (42 CFR Part 2), psychotherapy notes (HIPAA 164.508(a)(2)), HIV status (state statutes),
-# and genetic information (GINA). These can never be reached by the relevance path — only
+# and genetic information (GINA). These can never be reached by the relevance path, only
 # by explicit consent (or a logged emergency override). This is where granular consent lives.
 PROTECTED_CATEGORIES: frozenset[str] = frozenset({"psychotherapy", "sud", "hiv", "genetic"})
 
@@ -23,7 +23,7 @@ class Scope(IntEnum):
 
     IntEnum so we can compare with >= : a granted scope of REFERRAL_RELEVANT
     implies everything DEMOGRAPHICS_ONLY would allow, and so on. EMERGENCY is
-    the "break-glass" level — full access, but it gets logged (see scope.py).
+    the "break-glass" level, full access, but it gets logged (see scope.py).
     """
     # Enum helps ordered comparison, higher level, all lower permissions implied
     # Names instead of random numbers used to call
@@ -43,7 +43,7 @@ class Record:
         cardiology referral discloses "cardiology" and withholds "primary_care".
       - `protected_category`, if set, OVERRIDES relevance: the record is a specially
         protected category (see PROTECTED_CATEGORIES) and is withheld unless the
-        patient specifically authorized THAT category — relevant or not.
+        patient specifically authorized THAT category, relevant or not.
     """
 
     id: str
@@ -92,6 +92,6 @@ class Consent:
     # its own access; this is the patient policy that an escalation is checked against.
     escalation_allowed_tags: frozenset[str] = frozenset()
     # Specially protected categories the patient signed a SPECIFIC authorization for
-    # (Part 2 / psychotherapy / HIV). Empty means no special-category release — the
+    # (Part 2 / psychotherapy / HIV). Empty means no special-category release, the
     # default, and the realistic case for a routine referral.
     authorized_categories: frozenset[str] = frozenset()

@@ -2,7 +2,7 @@
 
 This is a pure function. It decides
 what a specialist agent is allowed to see *before* any of that data reaches the
-model's context. That's the thesis — permissions live here, in the tool layer,
+model's context. That's the thesis, permissions live here, in the tool layer,
 not in a prompt instruction the model can be talked out of.
 """
 
@@ -27,10 +27,10 @@ def disclosable_records(
 
     The contract every caller relies on:
       - disclosed + withheld together account for ALL of the patient's records
-        (nothing silently vanishes — withheld is auditable).
+        (nothing silently vanishes, withheld is auditable).
       - the model only ever receives `disclosed`.
       - if `audit_log` is given, EVERY call records one structured decision (not
-        just break-glass) — that's what makes the boundary provable after the fact.
+        just break-glass), that's what makes the boundary provable after the fact.
 
     Scope semantics:
       DENIED            -> nothing
@@ -84,7 +84,7 @@ def evaluate_escalation(consent: Consent, requested_tag: str) -> tuple[bool, str
     """Decide whether to grant an additional specialty tag on clinical escalation.
 
     This is the patient consent policy's call, NOT the specialist's. The specialist
-    asks; this function — running in the tool layer, not the model — answers. Grant
+    asks; this function, running in the tool layer, not the model, answers. Grant
     only what the patient pre-consented to release on escalation; everything else is
     routed for manual review (i.e., denied here). Returns (granted, rationale).
     """
@@ -92,7 +92,7 @@ def evaluate_escalation(consent: Consent, requested_tag: str) -> tuple[bool, str
         return False, "consent is denied for this referral; no escalation is possible"
     if requested_tag in PROTECTED_CATEGORIES:
         # Part 2 / psychotherapy / HIV: these need a specific written authorization the
-        # patient signs — an autonomous agent escalation can never stand in for that.
+        # patient signs, an autonomous agent escalation can never stand in for that.
         return False, (
             f"'{requested_tag}' is a specially protected category requiring specific written "
             "patient authorization (42 CFR Part 2 / psychotherapy notes / HIV statute); "
@@ -102,7 +102,7 @@ def evaluate_escalation(consent: Consent, requested_tag: str) -> tuple[bool, str
         return True, f"patient pre-consented to release '{requested_tag}' on justified escalation"
     return False, (
         f"patient has not pre-consented to release '{requested_tag}'; "
-        "routed for manual review — proceed on disclosed information only"
+        "routed for manual review, proceed on disclosed information only"
     )
 
 

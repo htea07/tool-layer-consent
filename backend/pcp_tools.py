@@ -13,7 +13,7 @@ PCP_TOOLS = [
             "assessment back. Call this once you've decided the case warrants a "
             "specialist's review. Returns the specialist's written assessment, "
             "which you should then summarize for the patient's chart. You do not "
-            "have direct access to the records — the specialist reviews them under "
+            "have direct access to the records, the specialist reviews them under "
             "the patient's consent and reports back."
         ),
         "input_schema": {

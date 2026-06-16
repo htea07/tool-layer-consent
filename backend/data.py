@@ -29,10 +29,10 @@ _PATIENTS: dict[str, Patient] = {
                    "ECG on 2026-01-08 ordered by Dr. Alan Cho (MRN R445789, callback "
                    "617-555-0142): irregular rhythm, controlled rate."),
             Record("rec_e", "primary_care", "Annual physical 2026-02: BMI 24, BP 128/82."),
-            # Ordinary but out of scope for a cardiology referral — until the workup raises a
+            # Ordinary but out of scope for a cardiology referral, until the workup raises a
             # clot/anticoagulation question and the patient pre-consented to it: the escalation demo.
             Record("rec_f", "pulmonology", "Provoked PE 2023 post-op; completed 6mo anticoagulation."),
-            # Specially protected categories — each needs its own signed authorization.
+            # Specially protected categories, each needs its own signed authorization.
             Record("rec_c", "behavioral_health",
                    "Psychotherapy note: processing work-related anxiety; CBT ongoing.",
                    protected_category="psychotherapy"),
@@ -51,7 +51,7 @@ _REFERRALS: dict[str, Referral] = {
         id="ref_001",
         patient_id="pat_001",
         specialist_org="cardiology_associates",
-        reason="Arrhythmia workup — evaluate AFib management before elective surgery.",
+        reason="Arrhythmia workup, evaluate AFib management before elective surgery.",
         relevant_tags=frozenset({"cardiology"}),
     ),
 }
@@ -86,7 +86,7 @@ def get_consent(patient_id: str, specialist_org: str, referral_id: str) -> Conse
 def grant_additional_tag(referral_id: str, tag: str) -> Referral | None:
     """Broaden a referral's relevant_tags so newly in-scope records can be disclosed.
 
-    This is the *effect* of a granted escalation — the policy decision itself lives in
+    This is the *effect* of a granted escalation, the policy decision itself lives in
     scope.evaluate_escalation(). Mutating the store here (vs. the frozen Referral) keeps
     the swap-for-a-real-DB story honest: in Firestore this is an UPDATE, nothing more.
     """

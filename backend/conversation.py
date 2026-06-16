@@ -1,6 +1,6 @@
 """Turn a Sample into a PCP<->specialist conversation, driven by the real tool layer.
 
-The disclosure/escalation decisions here are NOT scripted — they're computed by scope.py
+The disclosure/escalation decisions here are NOT scripted, they're computed by scope.py
 and recorded in a hash-chained ledger, exactly as the live agents would. Only the agents'
 natural-language wording is templated (there's no LLM in this path, so it needs no API key).
 Swap the SPEC turns for agent.py output to get live model reasoning.
@@ -44,7 +44,7 @@ def _disclosure_md(disclosed, withheld, consent) -> str:
 
 
 def _chart_summary(sample: Sample, disclosed, withheld, audit: AuditLog) -> str:
-    """The note the PCP receives back for the patient's chart — plain English, deterministic."""
+    """The note the PCP receives back for the patient's chart, plain English, deterministic."""
     org = sample.referral.specialist_org
     reason = sample.referral.reason
     n, m = len(disclosed), len(withheld)

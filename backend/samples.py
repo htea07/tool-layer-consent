@@ -1,4 +1,4 @@
-"""Gallery of demo cases for the UI — varied patients, referrals, and consents.
+"""Gallery of demo cases for the UI, varied patients, referrals, and consents.
 
 Each Sample is a self-contained story the dashboard renders as a PCP<->specialist
 conversation. (The CLI agent loops and demo.py use the single canonical case in
@@ -104,7 +104,7 @@ SAMPLES: list[Sample] = [
     _case(
         "Oncology referral · genetic data withheld",
         "p3", "oncology_group", "r3",
-        "Breast carcinoma — adjuvant treatment planning",
+        "Breast carcinoma, adjuvant treatment planning",
         relevant={"oncology"}, scope_=Scope.REFERRAL_RELEVANT,
         records=(
             _rec("onc1", "oncology", "Stage II breast carcinoma, dx 2025; on adjuvant therapy."),
@@ -125,7 +125,7 @@ SAMPLES: list[Sample] = [
     _case(
         "ED chest pain · emergency break-glass",
         "p5", "emergency_dept", "r5",
-        "Acute chest pain in the ED — life-safety override",
+        "Acute chest pain in the ED, life-safety override",
         relevant={"cardiology"}, scope_=Scope.EMERGENCY,
         records=_cardiology_records(),
     ),

@@ -35,7 +35,7 @@ def run_specialist_agent(referral_id: str, task: str) -> str:
         "You are a specialist physician's clinical agent reviewing an incoming "
         "referral. Request the records you're permitted to see, then give a brief "
         "assessment. If records were withheld as out-of-scope, acknowledge that "
-        "you proceeded only on the disclosed information — do not speculate about "
+        "you proceeded only on the disclosed information, do not speculate about "
         "withheld content. If your review surfaces a concern on a DIFFERENT clinical "
         "pathway that the disclosed records can't address, you may use "
         "request_additional_scope to ask the patient's consent policy to widen scope; "
@@ -56,7 +56,7 @@ def run_specialist_agent(referral_id: str, task: str) -> str:
         )
 
         if response.stop_reason != "tool_use":
-            # Done — print the full decision log, then return the final text block.
+            # Done, print the full decision log, then return the final text block.
             print("\n=== decision log (every tool-layer decision) ===")
             print(audit.pretty())
             return next((b.text for b in response.content if b.type == "text"), "")

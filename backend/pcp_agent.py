@@ -55,7 +55,7 @@ def run_pcp_agent(referral_id: str, task: str) -> str:
         )
 
         if response.stop_reason != "tool_use":
-            # Done — return the final text block.
+            # Done, return the final text block.
             return next((b.text for b in response.content if b.type == "text"), "")
 
         # Append the assistant turn (with its tool_use blocks) before answering.

@@ -6,7 +6,7 @@ Three tabs:
     plus a tamper-evident ledger you can try to break and a what-if consent control.
   - Automated checks: the eval harness numbers over a labeled scenario suite.
 
-Everything here is deterministic (computed by scope.py) — no LLM, no API key.
+Everything here is deterministic (computed by scope.py), no LLM, no API key.
 
 Run:  streamlit run app.py
 """

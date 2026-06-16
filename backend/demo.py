@@ -1,4 +1,4 @@
-"""Plain, no-API walkthrough of the enforcement story — run it to SEE the trace.
+"""Plain, no-API walkthrough of the enforcement story, run it to SEE the trace.
 
     python demo.py
 
@@ -16,7 +16,7 @@ from audit import AuditLog
 def main() -> None:
     audit = AuditLog()
 
-    print("STEP 1 — specialist requests records on a cardiology referral")
+    print("STEP 1: specialist requests records on a cardiology referral")
     r = st.run_request_records("ref_001", audit_log=audit)
     print(f"        disclosed: {[x['specialty'] for x in r['disclosed_records']]}  "
           f"withheld: {r['withheld_count']}")
@@ -26,20 +26,20 @@ def main() -> None:
         print(f"          - {rec['summary']}")
     print("        ^ note the Safe Harbor identifiers (date/MRN/phone) redacted in the text\n")
 
-    print("STEP 2 — escalate, asking for pulmonology (ordinary, patient pre-consented)")
+    print("STEP 2: escalate, asking for pulmonology (ordinary, patient pre-consented)")
     e = st.run_request_additional_scope(
         "ref_001", "pulmonology", "AFib + planned surgery: need prior clot/anticoag history",
         audit_log=audit,
     )
-    print(f"        granted: {e['granted']}  — {e['rationale']}\n")
+    print(f"        granted: {e['granted']}  ({e['rationale']})\n")
 
-    print("STEP 3 — escalate, asking for sud (protected: 42 CFR Part 2)")
+    print("STEP 3: escalate, asking for sud (protected: 42 CFR Part 2)")
     e = st.run_request_additional_scope(
         "ref_001", "sud", "anticoagulation interacts with alcohol use", audit_log=audit,
     )
-    print(f"        granted: {e['granted']}  — {e['rationale']}\n")
+    print(f"        granted: {e['granted']}  ({e['rationale']})\n")
 
-    print("STEP 4 — re-request records after the pulmonology grant")
+    print("STEP 4: re-request records after the pulmonology grant")
     r = st.run_request_records("ref_001", audit_log=audit)
     print(f"        disclosed: {[x['specialty'] for x in r['disclosed_records']]}  "
           f"withheld: {r['withheld_count']}")

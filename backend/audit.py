@@ -1,13 +1,13 @@
 """Structured, hash-chained decision log for every disclosure / escalation decision.
 
-The thesis isn't just "withhold the right records" — it's "be able to *prove*
+The thesis isn't just "withhold the right records", it's "be able to *prove*
 afterward what was disclosed, what was withheld, and why, and prove the log itself
 wasn't altered." So every decision the tool layer makes (not only break-glass) becomes
 one structured `DecisionEntry`, and entries are hash-chained into a tamper-evident
 ledger (sha256 over the previous hash + this entry's content).
 
 This is what makes the system auditable AND evaluable: tests and the eval harness
-assert against these entries, and `verify()` proves the chain is intact — matching
+assert against these entries, and `verify()` proves the chain is intact, matching
 HIPAA's accountability expectation (45 CFR 164.316) and Neupane et al. (2025)'s
 "decision logs secured via cryptographic hashing."
 """
@@ -19,7 +19,7 @@ import hashlib
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
-_GENESIS = "0" * 64  # prev_hash of the first entry — the root of the chain
+_GENESIS = "0" * 64  # prev_hash of the first entry, the root of the chain
 
 
 def _now() -> str:

@@ -17,7 +17,7 @@ from audit import AuditLog, DecisionEntry
 from sanitize import redact_safe_harbor
 
 # Tool schemas advertised to Claude. Descriptions are prescriptive about *when*
-# to call each tool — recent Opus models reach for tools conservatively, so the
+# to call each tool, recent Opus models reach for tools conservatively, so the
 # trigger condition belongs in the description, not just the system prompt.
 SPECIALIST_TOOLS = [
     {
@@ -72,7 +72,7 @@ SPECIALIST_TOOLS = [
 def run_request_records(referral_id: str, *, audit_log: AuditLog | None = None) -> dict:
     """Tool implementation. Returns a dict that becomes the tool_result content.
 
-    Crucially, the `withheld` records never appear in the return value — only a
+    Crucially, the `withheld` records never appear in the return value, only a
     count does. The model is told *that* something was withheld (honest) without
     being shown *what* (the enforcement).
     """
@@ -115,7 +115,7 @@ def run_request_additional_scope(
 
     The specialist asks; the patient consent policy (scope.evaluate_escalation)
     answers. On a grant we broaden the referral so the *next* request_records call
-    discloses the newly in-scope records — still routed through scope.py. The
+    discloses the newly in-scope records, still routed through scope.py. The
     specialist never reads anything by asking; it only changes what scope.py will
     later permit. Every outcome, grant or deny, is recorded.
     """

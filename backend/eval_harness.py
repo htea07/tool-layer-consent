@@ -9,7 +9,7 @@ clinical intent). The harness runs the actual tool layer and measures where it d
   - redaction recall   : planted Safe Harbor identifiers actually masked in disclosed text
 
 Because the ground-truth labels are authored from intent (not read back out of scope.py),
-agreement is real signal — not the tautology of testing scope.py against itself. The
+agreement is real signal, not the tautology of testing scope.py against itself. The
 redaction-recall row deliberately includes a NAME, which Stage-1 regex can't catch, so the
 harness honestly surfaces the Stage-2 (BERT) gap as a number.
 
@@ -159,7 +159,7 @@ def _print(report: dict) -> None:
           f"{report['over_withhold_rate']:.1%}  ({report['overwithheld']}/{report['must_disclose']})")
     print(f"redaction recall (Safe Harbor masked):   "
           f"{report['redaction_recall']:.1%}  ({report['planted_redacted']}/{report['planted_total']})")
-    print("  ^ the miss is the NAME — regex can't catch it; that's the Stage-2 (BERT) gap, quantified.")
+    print("  ^ the miss is the NAME, regex can't catch it; that's the Stage-2 (BERT) gap, quantified.")
 
 
 if __name__ == "__main__":
