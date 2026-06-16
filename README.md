@@ -23,8 +23,8 @@ information to coordinate care, under a permission boundary enforced in the
 The specialist's agent can only read clinical data by calling a tool. That
 tool's implementation (`specialist_tools.py`) routes every read through
 `scope.py`, which returns only the records the patient consented to disclose
-*for this referral*. Out-of-scope records — a psychotherapy note on a cardiology
-referral, say — are never returned, so they never enter the model's context.
+*for this referral*. Out-of-scope records, such as a psychotherapy note on a cardiology
+referral, are never returned, so they never enter the model's context.
 
 The alternative, loading every record and instructing the model "don't reveal
 the psych notes," is security theater: the data is already in context, and a
@@ -40,10 +40,10 @@ don't give it the secret.**
    cardiology referral; an unrelated primary-care note does not. This is HIPAA's
    "minimum necessary" in code.
 
-2. **Specific authorization** (protected records). Some categories —
+2. **Specific authorization** (protected records). Some categories like
    substance-use-disorder records (42 CFR Part 2), psychotherapy notes
-   (HIPAA §164.508(a)(2)), HIV status (state statutes) — legally require a
-   *specific* signed patient authorization, regardless of clinical relevance. A
+   (HIPAA §164.508(a)(2)), and HIV status (state statutes) legally require a
+   specific signed patient authorization, regardless of clinical relevance. A
    record marked `protected_category` is withheld **unless the patient authorized
    that exact category**, and relevance can never reach it. The escalation path
    refuses to widen into a protected category for the same reason: an autonomous
