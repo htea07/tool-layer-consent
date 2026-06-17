@@ -101,8 +101,8 @@ a substance-use escalation **denied** (Part 2), and the full decision log.
 
 Tool-layer authorization for LLM agents is established practice (OWASP AI Agent
 Security Cheat Sheet; Oso, Cerbos). The MCP authorization spec and Google's A2A
-protocol tackle agent-to-agent delegation. What's under-explored is the **cross-principal** case — two agents with conflicting interests
+protocol tackle agent-to-agent delegation. What's under-explored is the **cross-principal** case, two agents with conflicting interests
 negotiating **purpose-scoped, minimum-necessary** disclosure, including the
 special-category consent (psychotherapy / HIV statuses) that genuinely requires
-explicit patient authorization — as a concrete demonstrator.
+explicit patient authorization, as a concrete demonstrator.
 
