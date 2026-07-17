@@ -74,29 +74,6 @@ backend/
   tests/test_scope.py, tests/test_escalation.py
 ```
 
-## Run it
-
-```bash
-cd backend
-pip install -r requirements.txt
-
-pytest                      # prove the enforcement (no API key needed) — 18 tests
-pytest -s                   # same, plus the decision-log trace printed inline
-
-python demo.py              # plain, no-API walkthrough of disclosure + escalation + audit log
-python eval_harness.py      # labeled scenario suite -> leak-rate / over-disclosure / redaction-recall table
-streamlit run app.py        # dashboard: pick a case -> PCP/specialist conversation + ledger + eval (no API key)
-
-export ANTHROPIC_API_KEY=...
-python agent.py             # drive the specialist agent over the seeded referral
-python pcp_agent.py         # drive the PCP agent, which consults the specialist via the router
-```
-
-`demo.py` prints the project in one frame:
-`request_records -> 2 disclosed, 5 withheld` (cardiology in; unrelated *and*
-unauthorized-protected records out), then a pulmonology escalation **granted**,
-a substance-use escalation **denied** (Part 2), and the full decision log.
-
 ## Prior work & connection to this work
 
 Tool-layer authorization for LLM agents is established practice (OWASP AI Agent
