@@ -83,3 +83,20 @@ negotiating **purpose-scoped, minimum-necessary** disclosure, including the
 special-category consent (psychotherapy / HIV statuses) that genuinely requires
 explicit patient authorization, as a concrete demonstrator.
 
+## Run Locally
+
+1. Clone
+git clone https://github.com/htea07/tool-layer-consent.git
+cd tool-layer-consent
+
+2. (optional) virtual environment
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+
+3. Install dependencies
+pip install -r backend/requirements.txt
+
+4. Launch the dashboard
+cd backend
+streamlit run app.py
+
